@@ -1,5 +1,9 @@
+
 import Logosneakes from "@/assets/images/logo.svg";
+
 import Avatar from "@/assets/images/image-avatar.png";
+
+import Icon from "@/components/icons/icon";
 const Navbar = () => {
     return (
         <header>

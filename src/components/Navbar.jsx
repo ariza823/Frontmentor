@@ -5,6 +5,7 @@ import MenuIcon from "@/components/icons/MenuIcon";
 import CloseIcon from "@/components/icons/CloseIcon";
 import CarIcon from "./icons/CarIcon";
 import { useState } from "react";
+import Op from "./products/Op";
 
 const Navbar = () => {
 
@@ -24,16 +25,16 @@ const Navbar = () => {
             alt="Logo sneakers" 
             className="mr-auto h-5 md:mr-0 mb-1"
             />
-            <nav className= {`${navClass ? "absolute top-0 left-0 flex h-full w-4/5 flex-col gap-y-[21px] bg-white p-8 font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0":"hidden font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0"}`}>|
+            <nav className= {`${navClass ? "absolute top-0 left-0 flex h-full w-4/5 flex-col gap-y-[21px] bg-white p-8 font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0":"hidden font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0"}`}>
                 <button className="mb-12 md:hidden"  onClick=
                 {()=>setNavClass(false)}>
                     <CloseIcon />
                 </button>
-                <a href="#">colecciones</a>
-                <a href="#">Hombre</a> 
-                <a href="#">Mujer</a>                           
-                <a href="#">Acerca de</a>
-                <a href="#">Contacto</a>
+                <Op text="colecciones" />
+                <Op text="Hombre" />
+                <Op text="Mujer" />
+                <Op text="Acerca de" />
+                <Op text="contacto" />
             </nav>
             <div className="flex gap-4">
                 <button>
@@ -44,7 +45,9 @@ const Navbar = () => {
                 className="w-10"/>
             </div>    
         </header>
-    )
+ 
+
+    );
 
 };
 

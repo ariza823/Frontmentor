@@ -1,7 +1,7 @@
 const Mainproducts = () => {
     return(
         <>
-        <main>
+        <main className="grid grid-cols-1 md:cols-1 gap-8 md:grid-cols-2 ">
         <section>
             Galeria
         </section>

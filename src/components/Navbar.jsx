@@ -14,16 +14,16 @@ const Navbar = () => {
    
     return (
         <header className="container mx-auto flex 
-        items-center gap-8 bg-white px-4 py-8">
+        items-center gap-8 p-4 md:p-0">
             
-            <button className="md:hidden" onClick=
+            <button className="md:hidden font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0" onClick=
             {()=>setNavClass(true)}>
                <MenuIcon />  
             </button> 
             <img 
             src = {Logosneakes} 
             alt="Logo sneakers" 
-            className="mr-auto h-5 md:mr-0 mb-1"
+            className="mr-auto mb-1 h-5 md:mr-0"
             />
             <nav className= {`${navClass ? "absolute top-0 left-0 flex h-full w-4/5 flex-col gap-y-[21px] bg-white p-8 font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0":"hidden font-bold md:static md:mr-auto md:flex md:h-auto md:flex-row md:gap-4 md:p-0"}`}>
                 <button className="mb-12 md:hidden"  onClick=

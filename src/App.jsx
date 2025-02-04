@@ -1,6 +1,6 @@
 
-import Navbar from "./components/Navbar";
-import Mainproducts from "./components/products/Mainproducts";
+import Navbar from "./Components/Navbar";
+import Mainproducts from "./Components/Products/Mainproducts";
 const App = () => {
     return (
         <>

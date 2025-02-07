@@ -1,21 +1,18 @@
-//Imagenes grandes
-import imgProduct1 from '@/assets/images/image-product-1.jpg'
-import imgProduct2 from '@/assets/images/image-product-2.jpg'
-import imgProduct3 from '@/assets/images/image-product-3.jpg'
-import imgProduct4 from '@/assets/images/image-product-4.jpg'
-//Imagenes pequeñas
-import	imgproductsmall1 from '@/assets/images/image-product-1-thumbnail.jpg'
-import	imgproductsmall2 from '@/assets/images/image-product-2-thumbnail.jpg'
-import	imgproductsmall3 from '@/assets/images/image-product-3-thumbnail.jpg'
-import	imgproductsmall4 from '@/assets/images/image-product-4-thumbnail.jpg'
 //Iconos
 import PrevIcon from '@/Components/icons/PrevIcon.jsx';
 import NextIcon from '@/Components/icons/NextIcon.jsx';
+import CloseIcon from '@/Components/icons/CloseIcon';
 import { useState } from 'react'
 
-const ARRAY_IMGS = [imgProduct1, imgProduct2, imgProduct3, imgProduct4];
 
-export default () => {
+
+
+export default ({ 
+    ARRAY_IMGS = [],
+    ARRAY_IMG_SMALL = [], 
+    isOpenModal = false,
+    handleCloseModal = null,
+    ...props}) => {
 
     const [index, setIndex] = useState(0)
 
@@ -29,7 +26,16 @@ const handleClickPrev =() => {
 
     return(
 
-     <section className="grid md:grid-cols-4 md:gap-4">
+     <section {...props}>
+        {isOpenModal && (
+             <button 
+             onClick={handleCloseModal}
+             className='md:col-span-4 ml-auto text-right'
+             > 
+            <CloseIcon />
+            </button>
+        )}
+       
         <div className='col-span-4 relative'>
             <img src ={ARRAY_IMGS[index]} alt="" className='aspect-[16/12] w-full md:aspect-[25/20] md:rounded-md'/>
            <div className='absolute top-1/2 left-0 w-full 
@@ -49,15 +55,17 @@ const handleClickPrev =() => {
 
            </div>
         </div>
+        {
+            ARRAY_IMG_SMALL.map(smallImg =>(
+                <img 
+                key={smallImg}
+                src={smallImg} 
+                alt="" 
+                className='hidden md:block md:rounded-md'
+                />  
+            ))
+        }
 
-        <img src={imgproductsmall1} alt="" className='hidden md:block md:rounded-md'/>
-
-        <img src={imgproductsmall2} alt="" className='hidden md:block md:rounded-md'/>
-
-        <img src={imgproductsmall3} alt="" className='hidden md:block md:rounded-md'/>
-
-        <img src={imgproductsmall4} alt="" className='hidden md:block md:rounded-md'/>
-       
     </section>
 
     );

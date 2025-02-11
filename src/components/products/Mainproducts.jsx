@@ -13,15 +13,24 @@ import	imgproductsmall4 from '@/assets/images/image-product-4-thumbnail.jpg'
 
 const ARRAY_IMGS = [imgProduct1, imgProduct2, imgProduct3, imgProduct4];
 const ARRAY_IMG_SMALL = [imgproductsmall1, imgproductsmall2, imgproductsmall3, imgproductsmall4]
-
+const objetProduct = {
+    id: 1, 
+    title: "Fall Limited Edition Sneakers",
+    description : "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    subtitle: "SNEAKER COMPANY",
+    price: 250,
+    descount: 0.5,
+    imagesMain: ARRAY_IMGS,
+    imagesSmall: ARRAY_IMG_SMALL
+};
 const Mainproducts = () =>{
     return (
         <main className="grid grid-cols-1 items-center gap-8 md:mx-auto md:min-h-[calc(100vh-88px-3px)] md:container md:grid-cols-2">
             <Mainimagens 
-            ARRAY_IMGS = {ARRAY_IMGS} 
-            ARRAY_IMG_SMALL = {ARRAY_IMG_SMALL}
+            ARRAY_IMGS = {objetProduct.imagesMain} 
+            ARRAY_IMG_SMALL = {objetProduct.imagesSmall}
             />
-            <Detailsproduct />
+            <Detailsproduct objetProduct = {objetProduct} />
             
        
         </main>

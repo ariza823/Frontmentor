@@ -1,10 +1,8 @@
-// Importación de los íconos y hooks necesarios
+import { useEffect, useRef, useState } from "react";
 import PrevIcon from '@/Components/icons/PrevIcon.jsx';  // Icono de la flecha anterior
 import NextIcon from '@/Components/icons/NextIcon.jsx';  // Icono de la flecha siguiente
 import CloseIcon from '@/Components/icons/CloseIcon';    // Icono de cerrar modal
-import { useEffect, useRef, useState } from 'react';  // Hooks de React para el manejo de estado y referencias
 
-// Componente principal que recibe props como imágenes grandes (ARRAY_IMGS), imágenes pequeñas (ARRAY_IMG_SMALL), estado del modal y funciones de manejo de modal
 export default ({ 
     ARRAY_IMGS = [],           
     ARRAY_IMG_SMALL = [],       
@@ -76,15 +74,16 @@ export default ({
                 <div 
                     key={indexSmall}  // Asigna una clave única para cada imagen
                     onClick={() => setIndex(indexSmall)}  // Cambia la imagen activa al hacer clic
-                    className='relative overflow-hidden rounded-md cursor-pointer'  // Estilo para las miniaturas
+                    className="relative overflow-hidden rounded-md cursor-pointer"  // Estilo para las miniaturas
                 >
                     <img 
                         src={smallImg} 
                         alt="" 
                         className="hidden md:block md:rounded-md"  // Las miniaturas solo se muestran en pantallas medianas o más grandes
                     />
+                    {/* Efecto hover semitransparente para las miniaturas y resaltar la miniatura activa */}
                     <span 
-                        className={`absolute top-0 h-full w-full hover:bg-[rgba(255,255,255,0.5)] ${indexSmall === index ? "h-full w-full bg-[rgba(255,255,255, 0.5)]" : ""}`}  // Resalta la miniatura activa con un fondo semitransparente
+                        className={`absolute top-0 h-full w-full transition-all duration-300 hover:bg-[rgba(255,255,255,0.5)] ${indexSmall === index ? "h-full w-full bg-[rgba(255,255,255,0.5)]" : ""}`}  
                     />
                 </div>
             ))}

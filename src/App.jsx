@@ -1,12 +1,16 @@
 
 import Navbar from "./Components/Navbar";
-import Mainproducts from "./Components/Products/Mainproducts";
+import Mainproducts from "@/Components/Products/Mainproducts";
+import CartDetailsProvider from "@/context/Usecart";
+
+
 const App = () => {
     return (
         <>
+        <CartDetailsProvider>
            <Navbar />
-           <hr />
            <Mainproducts />
+        </CartDetailsProvider>
         </>
     );
   };

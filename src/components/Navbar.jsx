@@ -16,7 +16,6 @@ import CartDetails from "@/components/Products/Coldetails/CartDetails";
 
 
 
-
 const Navbar = () => {
   // Estado que controla si el menú está visible o no
   const [navClass, setNavClass] = useState(false); // Inicialmente el menú está oculto
@@ -44,7 +43,7 @@ const Navbar = () => {
           className={`${
             navClass
               ? "absolute top-0 left-0 flex h-full w-4/5 flex-col gap-y-6 bg-white p-8 font-bold z-50 md:static md:flex md:flex-row md:gap-4 md:p-0"
-              : "hidden font-bold md:flex md:flex-row md:gap-4 md:p-0"  // El menú es visible si 'navClass' es true, de lo contrario se oculta
+              : "hidden font-bold md:flex md:flex-row md:gap-4 md:p-0 " 
           }`}
         >
           {/* Botón para cerrar el menú en pantallas pequeñas */}
@@ -69,7 +68,7 @@ const Navbar = () => {
         
         </div>
       </header>
-      <span className="container mx-auto hidden h-[3px] w-full  md:block"></span>
+      <span className="container mx-auto hidden h-[2px] w-full  md:block bg-gray-200"></span>
 
     </>
   );

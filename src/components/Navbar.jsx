@@ -1,5 +1,5 @@
 // Importación de recursos como imágenes y componentes
-import { useState } from "react"; 
+import { useContext, useState } from "react"; 
 
 import Logosneakes from "@/assets/images/logo.svg"; 
 import Avatar from "@/assets/images/image-avatar.png"; 
@@ -13,10 +13,12 @@ import CarIcon from "@/components/icons/CarIcon";
 import Op from "@/components/Products/Op"; 
 
 import CartDetails from "@/components/Products/Coldetails/CartDetails";
+import {useCartDetails} from "@/Context/useCartDetails";
 
 
 
 const Navbar = () => {
+  const {totalQuantityProduct} = useContext(useCartDetails)
   // Estado que controla si el menú está visible o no
   const [navClass, setNavClass] = useState(false); // Inicialmente el menú está oculto
   const [isOpenMenucart, setDetailsCart] = useState(false);
@@ -58,9 +60,15 @@ const Navbar = () => {
           <Op text="contacto" />
         </nav>
         <div className="flex gap-4">
-          <button onClick={() => setDetailsCart(!isOpenMenucart)}>
+          <button onClick={() => setDetailsCart(!isOpenMenucart)}
+            className="relative"
+            >
             <CarIcon />  
+            <span className=" right-0 absolute top-0 translate-x-1 rounded-md bg-orange-primary px-1 text-xs font-bold text-white">
+              {totalQuantityProduct}
+            </span>
           </button>
+
           <img src={Avatar}  alt="Avatar"  className="  w-10 rounded-full hover:border-2 hover:border-orange-500 hover:shadow-lg transition-all duration-200 "/>
         {
           isOpenMenucart && <CartDetails />

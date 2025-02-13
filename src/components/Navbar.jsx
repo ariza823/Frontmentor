@@ -1,10 +1,7 @@
-// Importación de recursos como imágenes y componentes
 import { useContext, useState } from "react"; 
 
 import Logosneakes from "@/assets/images/logo.svg"; 
 import Avatar from "@/assets/images/image-avatar.png"; 
-
-
 
 import MenuIcon from "@/components/icons/MenuIcon"; 
 import CloseIcon from "@/components/icons/CloseIcon"; 
@@ -13,71 +10,72 @@ import CarIcon from "@/components/icons/CarIcon";
 import Op from "@/components/Products/Op"; 
 
 import CartDetails from "@/components/Products/Coldetails/CartDetails";
-import {useCartDetails} from "@/Context/useCartDetails";
-
-
+import { useCartDetails } from "@/Context/useCartDetails";
 
 const Navbar = () => {
-  const {totalQuantityProduct} = useContext(useCartDetails)
-  // Estado que controla si el menú está visible o no
-  const [navClass, setNavClass] = useState(false); // Inicialmente el menú está oculto
+  const { totalQuantityProduct } = useContext(useCartDetails);
+  const [navClass, setNavClass] = useState(false); // Menú oculto por defecto
   const [isOpenMenucart, setDetailsCart] = useState(false);
+
   return (
     <>
-      <header className="container relative mx-auto flex items-center gap-10 p-4 md:p-0 ">
+      <header className="container relative mx-auto flex items-center gap-10 p-4 md:p-0">
         {/* Botón para mostrar el menú en pantallas pequeñas */}
         <button
-          className="md:hidden font-bold"  // 'md:hidden' asegura que este botón solo se muestre en pantallas pequeñas
-          onClick={() => setNavClass(true)}  // Cambia el estado 'navClass' a 'true' para mostrar el menú
+          className="md:hidden font-bold"
+          onClick={() => setNavClass(true)} // Abre el menú
         >
-          <MenuIcon />  {/* Se renderiza el ícono del menú */}
+          <MenuIcon /> 
         </button>
 
         {/* Logo */}
         <img
-          src={Logosneakes}  // Muestra el logo de la tienda
-          alt="Logo sneakers"  // Texto alternativo para accesibilidad
-          className="mr-auto mb-1 h-5 md:mr-0"  // Estilos de márgenes y tamaño para el logo
+          src={Logosneakes} 
+          alt="Logo sneakers"
+          className="mr-auto mb-1 h-5 md:mr-0"
         />
 
         {/* Menú de navegación */}
         <nav
           className={`${
             navClass
-              ? "absolute top-0 left-0 flex h-full w-4/5 flex-col gap-y-6 bg-white p-8 font-bold z-50 md:static md:flex md:flex-row md:gap-4 md:p-0"
-              : "hidden font-bold md:flex md:flex-row md:gap-4 md:p-0 " 
+              ? "absolute top-0 left-0 flex h-screen w-4/5 flex-col gap-y-6 bg-white p-8 font-bold z-50 md:static md:flex md:flex-row md:gap-4 md:p-0"
+              : "hidden font-bold md:flex md:flex-row md:gap-4 md:p-0 "
           }`}
         >
           {/* Botón para cerrar el menú en pantallas pequeñas */}
           <button className="mb-12 md:hidden" onClick={() => setNavClass(false)}>
-            <CloseIcon />  
+            <CloseIcon />
           </button>
-        
+
           <Op text="colecciones" />
           <Op text="Hombre" />
           <Op text="Mujer" />
           <Op text="Info" />
           <Op text="contacto" />
         </nav>
-        <div className="flex gap-4">
-          <button onClick={() => setDetailsCart(!isOpenMenucart)}
-            className="relative"
-            >
-            <CarIcon />  
-            <span className=" right-0 absolute top-0 translate-x-1 rounded-md bg-orange-primary px-1 text-xs font-bold text-white">
+
+        {/* Carrito y avatar - Alineados a la derecha */}
+        <div className="flex gap-4 ml-auto">
+          <button onClick={() => setDetailsCart(!isOpenMenucart)} className="relative">
+            <CarIcon />
+            <span className="right-0 absolute top-0 translate-x-1 rounded-md bg-orange-primary px-1 text-xs font-bold text-white">
               {totalQuantityProduct}
             </span>
           </button>
 
-          <img src={Avatar}  alt="Avatar"  className="  w-10 rounded-full hover:border-2 hover:border-orange-500 hover:shadow-lg transition-all duration-200 "/>
-        {
-          isOpenMenucart && <CartDetails />
-        }
-        
+          <img
+            src={Avatar}
+            alt="Avatar"
+            className="w-10 rounded-full hover:border-2 hover:border-orange-500 hover:shadow-lg transition-all duration-200"
+          />
+          
+          {/* Detalles del carrito */}
+          {isOpenMenucart && <CartDetails />}
         </div>
       </header>
-      <span className="container mx-auto hidden h-[2px] w-full  md:block bg-gray-200"></span>
 
+      <span className="container mx-auto hidden h-[2px] w-full md:block bg-gray-200"></span>
     </>
   );
 };

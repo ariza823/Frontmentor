@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import PrevIcon from '@/Components/icons/PrevIcon.jsx';  // Icono de la flecha anterior
-import NextIcon from '@/Components/icons/NextIcon.jsx';  // Icono de la flecha siguiente
-import CloseIcon from '@/Components/icons/CloseIcon';    // Icono de cerrar modal
+import PrevIcon from '@/Components/icons/PrevIcon.jsx';  
+import NextIcon from '@/Components/icons/NextIcon.jsx';  
+import CloseIcon from '@/Components/icons/CloseIcon';    
 
 export default ({ 
     ARRAY_IMGS = [],           
@@ -9,7 +9,7 @@ export default ({
     isOpenModal = false,        
     handleCloseModal = null,    
     handleOpenModal = () => {}, 
-    ...props                   
+    ...props                    
 }) => {
     const btnSlider = useRef(null);  // Referencia al contenedor de los botones de navegación
     const [index, setIndex] = useState(0);  // Estado para manejar la imagen que está activa en el slider
@@ -32,7 +32,7 @@ export default ({
 
     return (
         <section {...props}>
-            {/* Botón para cerrar el modal, solo visible cuando isOpenModal es true */}
+            
             {isOpenModal && (
                 <button 
                     onClick={handleCloseModal}  // Llama a la función handleCloseModal cuando se hace clic
@@ -84,6 +84,10 @@ export default ({
                     {/* Efecto hover semitransparente para las miniaturas y resaltar la miniatura activa */}
                     <span 
                         className={`absolute top-0 h-full w-full transition-all duration-300 hover:bg-[rgba(255,255,255,0.5)] ${indexSmall === index ? "h-full w-full bg-[rgba(255,255,255,0.5)]" : ""}`}  
+                    />
+                    {/* Nuevo hover para resaltar el borde */}
+                    <span
+                        className={`absolute top-0 left-0 right-0 bottom-0 transition-all duration-300 border-2 ${indexSmall === index ? 'border-orange-primary' : 'border-transparent'} rounded-md`} 
                     />
                 </div>
             ))}

@@ -1,7 +1,7 @@
 import SlideProducts from "@/Components/Products/Col-images/SlideProducts"; 
 import { useState } from "react"; 
 
-export default ({ ARRAY_IMGS, ARRAY_IMG_SMALL }) => {
+export default ({ARRAY_IMGS, ARRAY_IMG_SMALL}) => {
   // Estado para controlar si el modal está abierto
   const [isOpenModal, SetOpenModal] = useState(false);
 

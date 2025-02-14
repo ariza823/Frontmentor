@@ -6,9 +6,7 @@ export const useCartDetails = createContext();
 export default (props) => { 
    const [ CarProducts, setProducts ] = useState ([]);
 
-   const addCartProducts = (product) => {
-
-    if(CarProducts.length === 0){ 
+   const addCartProducts = (product) => {if(CarProducts.length === 0){ 
    return setProducts([...CarProducts, product]);
     }
     CarProducts(

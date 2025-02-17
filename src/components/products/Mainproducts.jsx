@@ -13,10 +13,13 @@ import imgproductsmall2 from '@/assets/images/image-product-2-thumbnail.jpg';
 import imgproductsmall3 from '@/assets/images/image-product-3-thumbnail.jpg';
 import imgproductsmall4 from '@/assets/images/image-product-4-thumbnail.jpg';
 
+// Se crea un array con las imágenes grandes, que se utilizarán en el componente 'Mainimagens'
 const ARRAY_IMGS = [imgProduct1, imgProduct2, imgProduct3, imgProduct4];
+
+// Se crea un array con las imágenes pequeñas, que se utilizarán en el componente 'Mainimagens' para mostrar miniaturas
 const ARRAY_IMG_SMALL = [imgproductsmall1, imgproductsmall2, imgproductsmall3, imgproductsmall4];
 
-
+// Definición del objeto de producto, que contiene toda la información relevante del producto.
 const objetProduct = {
     id: 1,  
     title: "Fall Limited Edition Sneakers",  
@@ -25,22 +28,24 @@ const objetProduct = {
     price: 250,  
     discount: 0.5,  
     imagesMain: ARRAY_IMGS,  
-    imagesSmall: ARRAY_IMG_SMALL  
+    imagesSmall: ARRAY_IMG_SMALL 
 };
 
 const Mainproducts = () => {
     return (
+        // Estructura principal del componente 'Mainproducts', usando una grilla CSS para el diseño responsivo
         <main className="grid grid-cols-1 items-center gap-8 md:pt-12 md:mx-auto md:min-h-[calc(100vh-88px-3px)] md:container md:grid-cols-2">
             
+            {/* Componente 'Mainimagens' que se encarga de mostrar las imágenes grandes y pequeñas del producto */}
             <Mainimagens 
-                ARRAY_IMGS={objetProduct.imagesMain}  
-                ARRAY_IMG_SMALL={objetProduct.imagesSmall}  
+                ARRAY_IMGS={objetProduct.imagesMain}  // Pasa las imágenes grandes
+                ARRAY_IMG_SMALL={objetProduct.imagesSmall}  // Pasa las imágenes pequeñas
             />
             
-           
-            <Detailsproduct objetProduct={objetProduct} />  
+            {/* Componente 'Detailsproduct' que muestra los detalles del producto */}
+            <Detailsproduct objetProduct={objetProduct} />  {/* Pasa el objeto del producto con toda la información */}
         </main>
     );
 };
 
-export default Mainproducts;
+export default Mainproducts;  // Exporta el componente 'Mainproducts' para su uso en otros lugares de la aplicación.

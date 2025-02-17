@@ -1,14 +1,14 @@
 import { useState } from "react";  
 import { createContext } from "react";  
 
-export const useCartDetails = createContext();  // Crea un contexto que será utilizado en otros componentes para acceder a la información del carrito.
+export const useCartDetails = createContext();  // Crea un contexto que será utilizado en otros componentes 
 
-export default (props) => {  // Exporta un componente funcional que recibe "props" como argumento. 
-   const [ CarProducts, setProducts ] = useState([]);  // Inicializa el estado "CarProducts" con un array vacío para almacenar los productos del carrito.
+export default (props) => {   
+   const [ CarProducts, setProducts ] = useState([]);  // Inicializa el estado "CarProducts" con un array vacío 
 
    // Función que agrega productos al carrito.
    const addCartProducts = (product) => {
-      if (CarProducts.length === 0) {  // Si el carrito está vacío, agrega el producto directamente.
+      if (CarProducts.length === 0) {  
          return setProducts([...CarProducts, product]);
       }
      
@@ -34,7 +34,7 @@ export default (props) => {  // Exporta un componente funcional que recibe "prop
     0  
    );
 
-   // Devuelve el contexto con los valores y funciones relacionadas con el carrito.
+   
    return (
         <useCartDetails.Provider value={{ CarProducts, addCartProducts, deleteCartProducts, totalQuantityProduct }}>
             {props.children}  
